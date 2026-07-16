@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Anjali & Ranju — Wedding Invitation · 7 November 2026</title>
+<meta name="description" content="Together with their families, Anjali Mary Thomas & Ranju Raju joyfully invite you to celebrate their wedding — 7 November 2026, Kozhuvanal, Kerala."/>
+<meta name="theme-color" content="#425c39"/>
+<!-- Open Graph / WhatsApp / social share thumbnail -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DigiWed Invitations"/>
+<meta property="og:title" content="Anjali &amp; Ranju — Wedding Invitation"/>
+<meta property="og:description" content="Together with their families, we joyfully invite you to celebrate — 7 November 2026, Kozhuvanal, Kerala."/>
+<meta property="og:image" content="https://res.cloudinary.com/dormnrhdf/image/upload/v1784184129/digiwed-invitations/anjali-ranju/thumbnail_tyamwg.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Anjali & Ranju — 7 November 2026"/>
+<meta property="og:url" content="https://digiwed161-sys.github.io/Anjali_weds_Ranju/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Anjali &amp; Ranju — Wedding Invitation"/>
+<meta name="twitter:description" content="7 November 2026 · Kozhuvanal · Pala · Kerala"/>
+<meta name="twitter:image" content="https://res.cloudinary.com/dormnrhdf/image/upload/v1784184129/digiwed-invitations/anjali-ranju/thumbnail_tyamwg.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<style>
+:root{
+  --bg:#f7f2e7;
+  --bg2:#f0e9d8;
+  --bg3:#e8dfc9;
+  --green:#425c39;
+  --green2:#567045;
+  --gold:#a3812f;
+  --gold2:#c6a35c;
+  --ink:#2a2a1c;
+  --ink2:#2a2a1c;
+  --muted:#6f6650;
+  --rule:rgba(163,129,47,.22);
+  --card:#ffffff;
+  --cardborder:rgba(163,129,47,.22);
+  --gold-dim:rgba(163,129,47,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased;font-weight:600}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* LEAF / DUST TWINKLE */
+.travel-dots{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
+.travel-dot{position:absolute;width:3px;height:3px;background:var(--green2);border-radius:50%;opacity:0;animation:twinkle linear infinite}
+.travel-dot:nth-child(1){left:8%;top:20%;animation-duration:3s;animation-delay:0s}
+.travel-dot:nth-child(2){left:22%;top:65%;animation-duration:4s;animation-delay:-.8s}
+.travel-dot:nth-child(3){left:45%;top:15%;animation-duration:3.5s;animation-delay:-1.5s}
+.travel-dot:nth-child(4){left:68%;top:72%;animation-duration:4.5s;animation-delay:-.4s}
+.travel-dot:nth-child(5){left:82%;top:38%;animation-duration:3.2s;animation-delay:-2s}
+.travel-dot:nth-child(6){left:92%;top:55%;animation-duration:3.8s;animation-delay:-1s}
+.travel-dot:nth-child(7){left:35%;top:82%;animation-duration:4.2s;animation-delay:-.3s}
+.travel-dot:nth-child(8){left:55%;top:48%;animation-duration:3.6s;animation-delay:-2.5s}
+@keyframes twinkle{0%,100%{opacity:0}50%{opacity:.55}}
+
+/* LANDING */
+#landing{position:fixed;inset:0;z-index:1000;background:radial-gradient(ellipse at 30% 40%,#efe8d5 0%,#f7f2e7 55%,#faf6ec 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 28px;text-align:center;transition:opacity 1s ease,visibility 1s ease}
+#landing.gone{opacity:0;visibility:hidden;pointer-events:none}
+#landing::before{content:"";position:absolute;top:22px;left:22px;right:22px;bottom:22px;border:1px solid rgba(66,92,57,.35);pointer-events:none}
+#landing::after{content:"";position:absolute;top:30px;left:30px;right:30px;bottom:30px;border:1px solid rgba(66,92,57,.15);pointer-events:none}
+.ornament{position:absolute;width:56px;height:56px;pointer-events:none;opacity:0;animation:fadeIn 1.2s ease forwards 1.5s}
+.ornament.tl{top:30px;left:30px;border-top:2px solid var(--green);border-left:2px solid var(--green)}
+.ornament.tr{top:30px;right:30px;border-top:2px solid var(--green);border-right:2px solid var(--green)}
+.ornament.bl{bottom:30px;left:30px;border-bottom:2px solid var(--green);border-left:2px solid var(--green)}
+.ornament.br{bottom:30px;right:30px;border-bottom:2px solid var(--green);border-right:2px solid var(--green)}
+@keyframes fadeIn{to{opacity:1}}
+
+.landing-mono{width:clamp(90px,20vw,130px);height:auto;margin-bottom:22px;opacity:0;animation:fadeIn 1.3s ease forwards .2s,monoDrift 6s ease-in-out infinite 2s}
+@keyframes monoDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.landing-stamp{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5em;color:var(--green);border:1px solid var(--green);padding:4px 12px;margin-bottom:16px;opacity:0;animation:fadeIn .8s ease forwards .4s}
+.landing-greet{font-family:'Cinzel',serif;letter-spacing:.4em;font-size:9.5px;color:var(--green);margin-bottom:10px;opacity:0;animation:fadeIn .8s ease forwards .55s}
+.landing-guest{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,4.5vw,24px);color:var(--ink);margin-bottom:24px;opacity:0;animation:fadeIn .8s ease forwards .7s}
+.landing-guest:empty{display:none}
+.landing-names{font-family:'Italiana',serif;font-size:clamp(58px,16vw,100px);line-height:.88;color:var(--ink);margin-bottom:18px;opacity:0;animation:fadeIn 1.2s ease forwards .85s}
+.landing-names .amp{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);display:block;font-size:.46em;margin:8px 0}
+.landing-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--muted);margin-bottom:20px;opacity:0;animation:fadeIn .8s ease forwards 1s;max-width:32ch}
+.landing-date{font-family:'Cinzel',serif;letter-spacing:.45em;font-size:15px;color:var(--gold);margin-bottom:32px;opacity:0;animation:fadeIn .8s ease forwards 1.12s}
+.landing-divider{display:flex;align-items:center;gap:10px;margin-bottom:32px;opacity:0;animation:fadeIn .8s ease forwards 1.25s}
+.landing-divider span{width:55px;height:1px;background:var(--gold);opacity:.5}
+.landing-divider .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.enter-btn{opacity:0;animation:fadeIn 1s ease forwards 1.45s;display:inline-flex;align-items:center;gap:10px;padding:15px 40px;background:var(--green);color:#f7f2e7;border:none;font-family:'Cinzel',serif;letter-spacing:.28em;font-size:10.5px;cursor:pointer;transition:all .3s;border-radius:2px;box-shadow:0 10px 28px rgba(66,92,57,.35)}
+.enter-btn:hover,.enter-btn:active{background:var(--green2)}
+.enter-btn svg{width:11px;height:11px}
+.landing-venue{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.38em;color:var(--muted);opacity:0;animation:fadeIn .8s ease forwards 1.65s;margin-top:18px;padding:0 20px}
+#main{display:none}
+#main.show{display:block}
+
+/* STICKY BADGE */
+#mono-badge{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:900;width:44px;height:44px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s;background:rgba(247,242,231,.95);border-radius:50%;border:1px solid rgba(66,92,57,.35);backdrop-filter:blur(8px);box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#mono-badge.show{opacity:1}
+#mono-badge svg{width:34px;height:34px}
+
+/* SECTION COMMONS */
+.section-eyebrow{font-family:'Cinzel',serif;letter-spacing:.42em;font-size:9.5px;color:var(--gold);margin-bottom:14px}
+.section-title{font-family:'Italiana',serif;font-size:clamp(36px,9vw,54px);color:var(--ink);margin-bottom:44px;line-height:1.1}
+.divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:44px 0 10px}
+.divider span{flex:1;height:1px;background:var(--rule);max-width:76px}
+.divider .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* INVITE */
+.invite{background:var(--bg);padding:88px 28px 66px;position:relative;text-align:center;border-bottom:1px solid var(--rule)}
+.invite::before{content:"";position:absolute;top:40px;left:50%;transform:translateX(-50%);width:38px;height:38px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.35}
+.invite-personal{font-family:'Italiana',serif;font-style:italic;color:var(--gold);font-size:21px;margin-bottom:28px}
+.invite-personal:empty{display:none}
+.invite-names{font-family:'Italiana',serif;font-size:clamp(54px,14vw,96px);line-height:.88;color:var(--ink);margin-bottom:30px}
+.invite-names .amp{color:var(--gold);font-family:'Playfair Display',serif;font-style:italic;font-size:.52em;display:inline-block;vertical-align:middle;margin:0 .1em}
+.invite-body{max-width:44ch;margin:0 auto}
+.invite-body p{font-size:19px;font-weight:600;line-height:1.85;color:var(--ink);margin-bottom:14px;font-style:italic}
+.invite-body .accent{color:var(--ink);font-weight:600}
+
+/* BIBLE VERSE */
+.verse-block{background:rgba(66,92,57,.06);border-left:2px solid var(--green);padding:18px 20px;margin:24px auto;max-width:440px;text-align:left;border-radius:0 6px 6px 0}
+.verse-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);line-height:1.85;margin-bottom:8px}
+.verse-ref{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.3em;color:var(--gold);opacity:.85}
+
+/* FAMILIES */
+.families{background:var(--bg);padding:76px 24px 66px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
+.family-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:480px;margin:0 auto;position:relative}
+@media(min-width:640px){.family-grid{grid-template-columns:1fr 1fr;max-width:720px}}
+.family-card{background:#fff;border:1px solid var(--cardborder);border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,.06);padding:28px 22px;text-align:left}
+.family-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px dashed rgba(163,129,47,.25)}
+.family-photo-wrap{flex-shrink:0;padding:3px;background:linear-gradient(135deg,var(--green),var(--gold),var(--green2));border-radius:50%}
+.family-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;background:linear-gradient(145deg,var(--bg3) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;font-family:'Italiana',serif;font-size:28px;color:var(--green);border:3px solid var(--bg)}
+.family-card-name{font-family:'Italiana',serif;font-size:22px;color:var(--ink);line-height:1.15;word-break:break-word}
+.family-card-role{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.32em;color:var(--gold);margin-top:4px;opacity:.85}
+.family-detail{font-size:16.5px;color:var(--muted);font-style:italic;line-height:1.85;font-weight:600}
+.family-detail strong{font-family:'Cinzel',serif;font-style:normal;font-size:8px;letter-spacing:.28em;color:var(--gold);display:block;margin:12px 0 4px;font-weight:500;opacity:.9}
+.family-sep{display:flex;align-items:center;gap:10px;margin:18px 0;opacity:.3}
+.family-sep span{flex:1;height:1px;background:var(--gold)}
+.family-sep i{font-size:12px;color:var(--gold);font-style:normal}
+
+/* EVENTS */
+.details{background:var(--bg2);padding:76px 24px 66px;border-bottom:1px solid var(--rule)}
+.details-lede{text-align:center;color:var(--muted);font-size:19px;font-weight:600;max-width:38ch;margin:0 auto 36px;line-height:1.7;font-style:italic}
+.event-card{background:#fff;border:1px solid var(--cardborder);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);padding:22px 18px 18px;margin-bottom:14px;transition:all .4s;max-width:520px;margin-left:auto;margin-right:auto}
+.event-card:hover{border-color:rgba(163,129,47,.4)}
+.event-head{display:flex;align-items:center;gap:12px;padding-bottom:13px;margin-bottom:13px;border-bottom:1px dashed rgba(163,129,47,.25)}
+.event-num{width:30px;height:30px;border-radius:50%;background:var(--green);color:#f7f2e7;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:10px;font-weight:500;flex-shrink:0}
+.event-title{font-family:'Cinzel',serif;letter-spacing:.26em;font-size:10.5px;color:var(--ink);font-weight:500}
+.event-row{display:flex;gap:12px;align-items:flex-start;padding:9px 0}
+.event-row:last-of-type{border-bottom:none}
+.row-icon{width:34px;height:34px;border-radius:50%;background:rgba(66,92,57,.08);border:1px solid rgba(66,92,57,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green)}
+.row-icon svg{width:15px;height:15px}
+.row-body{flex:1;min-width:0}
+.row-label{font-family:'Cinzel',serif;letter-spacing:.25em;font-size:8.5px;color:var(--muted);margin-bottom:2px}
+.row-value{font-family:'Italiana',serif;font-size:18px;color:var(--ink);line-height:1.25}
+.row-sub{font-size:16.5px;font-weight:600;color:var(--muted);font-style:italic;margin-top:1px}
+.event-actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.btn{flex:1;min-width:110px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:3px;font-family:'Cinzel',serif;letter-spacing:.18em;font-size:9.5px;cursor:pointer;border:none;transition:all .2s;font-weight:500}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--green);color:#f7f2e7}
+.btn-primary:hover{background:var(--green2)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(163,129,47,.3)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn svg{width:11px;height:11px}
+
+/* RSVP */
+.rsvp{background:var(--bg);padding:66px 24px;text-align:center;border-bottom:1px solid var(--rule)}
+.rsvp-copy{color:var(--muted);font-size:19px;font-weight:600;max-width:36ch;margin:0 auto 14px;line-height:1.65;font-style:italic}
+.rsvp-greet{font-family:'Italiana',serif;font-style:italic;color:var(--gold);font-size:18px;margin-bottom:22px}
+.rsvp-greet:empty{display:none}
+.rsvp-form{background:#fff;border:1px solid var(--cardborder);border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);padding:26px 20px;text-align:left;max-width:500px;margin:0 auto 18px}
+.rsvp-form h3{font-family:'Italiana',serif;font-size:25px;color:var(--ink);margin-bottom:5px;text-align:center}
+.rsvp-form .note{text-align:center;font-size:16.5px;color:var(--muted);margin-bottom:22px;font-style:italic}
+.field{margin-bottom:18px}
+.field-label{font-family:'Cinzel',serif;letter-spacing:.2em;font-size:9.5px;color:var(--ink);margin-bottom:9px;font-weight:500;display:block}
+.field-label .num{display:inline-block;width:17px;height:17px;border-radius:50%;background:var(--green);color:#fff;text-align:center;line-height:17px;font-size:8.5px;margin-right:6px}
+.input,.textarea{width:100%;padding:11px 13px;border:1px solid var(--cardborder);border-radius:6px;background:#fff;font-family:'Cormorant Garamond',serif;font-size:17.5px;color:var(--ink);outline:none;transition:border-color .2s}
+.input::placeholder,.textarea::placeholder{color:var(--muted)}
+.input:focus,.textarea:focus{border-color:var(--gold)}
+.event-pick{border:1px solid var(--cardborder);border-radius:6px;background:rgba(255,255,255,.03);overflow:hidden;transition:all .2s;margin-bottom:7px}
+.event-pick.active{border-color:var(--green);background:rgba(66,92,57,.08)}
+.chk{display:flex;align-items:center;gap:10px;cursor:pointer;padding:11px 13px;font-family:'Cormorant Garamond',serif;font-size:17.5px;color:var(--ink)}
+.event-pick .chk{border:none;background:transparent;border-radius:0;margin-bottom:0}
+.chk input{appearance:none;-webkit-appearance:none;width:17px;height:17px;border:1.5px solid var(--muted);border-radius:4px;flex-shrink:0;cursor:pointer;position:relative;background:transparent}
+.chk input:checked{background:var(--green);border-color:var(--green)}
+.chk input:checked::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:11px;text-align:center;line-height:15px}
+.chk-title{font-weight:500;flex:1}
+.chk-sub{font-size:14.5px;color:var(--muted);display:block;margin-top:1px;font-style:italic}
+.ev-count{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 13px 11px;border-top:1px dashed rgba(163,129,47,.25);background:rgba(255,255,255,.03)}
+.ev-count-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;color:var(--gold)}
+.mini-counter{display:flex;align-items:center;gap:9px}
+.mini-counter button{width:30px;height:30px;border-radius:50%;border:1px solid var(--green);background:transparent;color:var(--ink);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mini-counter button:active{background:var(--green);color:#fff}
+.mini-count{font-family:'Italiana',serif;font-size:19px;color:var(--ink);min-width:26px;text-align:center}
+.rsvp-attend-toggle{display:flex;gap:7px;margin-bottom:5px}
+.toggle-btn{flex:1;padding:13px;border:1px solid rgba(163,129,47,.25);background:transparent;border-radius:4px;font-family:'Cinzel',serif;letter-spacing:.18em;font-size:9.5px;color:var(--ink);cursor:pointer;transition:all .2s;font-weight:500}
+.toggle-btn.active{background:var(--green);color:#f7f2e7;border-color:var(--green)}
+.submit-btn{width:100%;padding:15px;background:var(--green);color:#f7f2e7;border:none;border-radius:4px;font-family:'Cinzel',serif;letter-spacing:.28em;font-size:10.5px;cursor:pointer;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;font-weight:500}
+.submit-btn:hover{background:var(--green2)}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed}
+.submit-btn svg{width:13px;height:13px}
+.success{display:none;text-align:center;padding:32px 20px;background:var(--card);border-radius:10px;max-width:500px;margin:0 auto;border:1px solid var(--cardborder)}
+.success.show{display:block}
+.success .check{width:58px;height:58px;border-radius:50%;background:var(--green);color:#f7f2e7;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
+.success h3{font-family:'Italiana',serif;font-size:27px;color:var(--ink);margin-bottom:7px}
+.success p{color:var(--muted);font-size:15px;font-style:italic}
+.rsvp-existing{display:none;background:var(--card);border-radius:10px;padding:26px 20px;text-align:left;max-width:500px;margin:0 auto;border:1px solid var(--cardborder)}
+.rsvp-existing.show{display:block}
+.rsvp-existing .ex-head{text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px dashed rgba(163,129,47,.25)}
+.rsvp-existing .ex-icon{width:52px;height:52px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 12px}
+.rsvp-existing h3{font-family:'Italiana',serif;font-size:24px;color:var(--ink);margin-bottom:4px}
+.rsvp-existing .ex-sub{font-size:14px;color:var(--muted);font-style:italic}
+.ex-row{padding:10px 0;border-bottom:1px dashed rgba(163,129,47,.15)}
+.ex-row:last-child{border-bottom:none}
+.ex-lbl{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.25em;color:var(--gold);margin-bottom:4px}
+.ex-val{font-size:17.5px;color:var(--ink);font-style:italic}
+.ex-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.ex-tag{background:rgba(66,92,57,.12);border:1px solid rgba(66,92,57,.3);border-radius:5px;padding:4px 10px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:var(--ink)}
+.ex-edit-btn{width:100%;margin-top:16px;padding:13px;background:transparent;border:1px solid rgba(163,129,47,.3);border-radius:4px;font-family:'Cinzel',serif;letter-spacing:.22em;font-size:9.5px;color:var(--gold);cursor:pointer;transition:all .2s}
+
+/* WISHES WALL */
+.wishes{background:var(--bg2);padding:76px 24px 66px;border-bottom:1px solid var(--rule)}
+.wish-form{background:var(--card);border:1px solid var(--cardborder);border-radius:10px;padding:22px 18px;max-width:500px;margin:0 auto 28px}
+.wish-form textarea{width:100%;padding:11px 13px;border:1px solid var(--cardborder);border-radius:6px;background:#fff;font-family:'Cormorant Garamond',serif;font-size:17.5px;color:var(--ink);outline:none;min-height:80px;resize:none;transition:border-color .2s}
+.wish-form textarea:focus{border-color:var(--gold)}
+.wish-form textarea::placeholder{color:var(--muted)}
+.wish-form input{width:100%;padding:11px 13px;border:1px solid var(--cardborder);border-radius:6px;background:#fff;font-family:'Cormorant Garamond',serif;font-size:17.5px;color:var(--ink);outline:none;margin-bottom:10px;transition:border-color .2s}
+.wish-form input:focus{border-color:var(--gold)}
+.wish-form input::placeholder{color:var(--muted)}
+.wfl-submit{width:100%;padding:13px;background:var(--green);color:#f7f2e7;border:none;border-radius:4px;font-family:'Cinzel',serif;letter-spacing:.25em;font-size:10px;cursor:pointer;margin-top:10px;transition:background .2s}
+.wfl-submit:hover{background:var(--green2)}
+.wfl-submit:disabled{opacity:.5;cursor:not-allowed}
+#wgrid{display:grid;grid-template-columns:1fr;gap:12px;max-width:500px;margin:0 auto}
+.wish-card{background:#fff;border:1px solid var(--cardborder);border-radius:10px;box-shadow:0 1px 8px rgba(0,0,0,.05);padding:18px 16px}
+.wish-card-name{font-family:'Italiana',serif;font-size:20px;color:var(--gold);margin-bottom:4px}
+.wish-card-msg{font-size:17px;font-weight:600;color:var(--muted);font-style:italic;line-height:1.7}
+.wish-card-time{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.22em;color:var(--muted);opacity:.55;margin-top:8px}
+#loadmore-wrap{text-align:center;margin-top:22px;display:none}
+#loadMoreBtn{padding:12px 32px;background:transparent;border:1px solid rgba(163,129,47,.3);border-radius:4px;font-family:'Cinzel',serif;letter-spacing:.22em;font-size:9.5px;color:var(--gold);cursor:pointer;transition:all .2s}
+
+/* CONTACT */
+.contact{background:var(--bg);padding:56px 24px 38px;text-align:center}
+.contact .section-eyebrow{color:var(--gold);margin-bottom:12px}
+.contact h3{font-family:'Italiana',serif;font-size:27px;color:var(--ink);margin-bottom:5px}
+.contact p{color:var(--muted);font-size:17px;font-weight:600;margin-bottom:28px;max-width:30ch;margin-left:auto;margin-right:auto;font-style:italic}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin:0 auto}
+.cbtn{padding:13px;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:7px;font-family:'Cinzel',serif;letter-spacing:.16em;font-size:9px;cursor:pointer;border:none;text-decoration:none}
+.cbtn-call{background:transparent;color:var(--green);border:1.5px solid var(--green)}
+.cbtn svg{width:13px;height:13px}
+.contact-person{font-family:'Italiana',serif;font-size:15px;display:block;margin-bottom:2px;color:var(--ink)}
+
+/* FOOTER */
+.footer{background:#22261a;padding:30px 24px 26px;text-align:center;color:#f7f2e7;border-top:1px solid rgba(163,129,47,.2)}
+.footer .couple-initials{font-family:'Cinzel',serif;letter-spacing:.55em;font-size:11.5px;color:var(--gold2);margin-bottom:16px}
+.footer .tagline{font-family:'Italiana',serif;font-style:italic;font-size:16px;color:#f7f2e7;margin-bottom:14px}
+.footer .brand{font-family:'Cinzel',serif;letter-spacing:.38em;font-size:8.5px;color:rgba(198,163,92,.5)}
+.foot-social{display:flex;justify-content:center;align-items:center;gap:.85rem;margin-top:1.8rem;flex-wrap:wrap}
+.foot-social a{width:42px;height:42px;border-radius:50%;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;color:var(--gold2);text-decoration:none;transition:background .3s,color .3s,transform .25s,border-color .3s}
+.foot-social a:hover{background:var(--gold2);color:#22261a;border-color:var(--gold2);transform:translateY(-3px)}
+.foot-social svg{width:18px;height:18px}
+
+/* UTILS */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.reveal.on{opacity:1;transform:none}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:#f7f2e7;padding:11px 20px;border-radius:999px;font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.2em;opacity:0;transition:all .3s;z-index:9999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#bgmBtn{position:fixed;bottom:22px;right:18px;z-index:9000;width:46px;height:46px;border-radius:50%;background:rgba(247,242,231,.93);border:1.5px solid rgba(66,92,57,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.16);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;padding:0}
+#bgmBtn .bgm-ring{position:absolute;inset:-4px;border-radius:50%;border:2px dashed rgba(66,92,57,.6);animation:bgmSpin 4s linear infinite;pointer-events:none;display:none}
+#bgmBtn.admin-mode .bgm-ring{display:block}
+@keyframes bgmSpin{to{transform:rotate(360deg)}}
+
+/* IMAGE UPLOAD SYSTEM */
+.img-slot-add{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;z-index:10;background:rgba(0,0,0,.25)}
+.img-slot-add .plus{width:44px;height:44px;border-radius:50%;background:rgba(163,129,47,.92);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:300;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+.img-slot-add span{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.22em;color:rgba(255,255,255,.9)}
+.avatar-wrap{position:relative;cursor:pointer}
+.avatar-upload-btn{position:absolute;bottom:-2px;right:-2px;width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;font-weight:bold;box-shadow:0 1px 6px rgba(0,0,0,.4);z-index:5;line-height:1}
+
+@media(min-width:640px){
+  .invite,.families,.details,.rsvp,.contact,.wishes{padding-left:44px;padding-right:44px}
+}
+</style>
+</head>
+<body>
+
+<!-- DUST TWINKLE -->
+<div class="travel-dots">
+  <div class="travel-dot"></div><div class="travel-dot"></div><div class="travel-dot"></div>
+  <div class="travel-dot"></div><div class="travel-dot"></div><div class="travel-dot"></div>
+  <div class="travel-dot"></div><div class="travel-dot"></div>
+</div>
+
+<!-- STICKY MONOGRAM -->
+<div id="mono-badge">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <circle cx="50" cy="50" r="48" fill="#22261a" stroke="rgba(198,163,92,.45)" stroke-width="1"/>
+    <text x="30" y="62" text-anchor="middle" font-family="Italiana, serif" font-size="34" fill="#c6a35c">A</text>
+    <text x="50" y="62" text-anchor="middle" font-family="Playfair Display, serif" font-size="18" fill="rgba(198,163,92,.7)" font-style="italic">&amp;</text>
+    <text x="70" y="62" text-anchor="middle" font-family="Cinzel, serif" font-size="28" fill="#c6a35c">R</text>
+  </svg>
+</div>
+
+<!-- LANDING -->
+<div id="landing">
+  <!-- Hero photo background (admin-uploadable) -->
+  <div data-slot="landing_bg" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
+    <img class="slot-img" id="landingBgImg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:none">
+    <div id="landingScrim" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(247,242,231,.82) 0%,rgba(247,242,231,.55) 26%,rgba(247,242,231,.55) 68%,rgba(247,242,231,.9) 100%);display:none"></div>
+  </div>
+  <button id="landingBgPlusBtn" style="display:none;position:absolute;top:16px;right:16px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;font-size:22px;color:#fff;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.25)">+</button>
+
+  <div class="ornament tl"></div>
+  <div class="ornament tr"></div>
+  <div class="ornament bl"></div>
+  <div class="ornament br"></div>
+
+  <div class="landing-stamp">WEDDING · NOV 2026</div>
+  <svg class="landing-mono" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(163,129,47,.35)" stroke-width="1"/>
+    <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(163,129,47,.15)" stroke-width=".5"/>
+    <path d="M100 26 C112 44 130 50 148 50 C130 58 122 76 122 96 C110 78 90 78 78 96 C78 76 70 58 52 50 C70 50 88 44 100 26 Z" fill="none" stroke="rgba(66,92,57,.4)" stroke-width="1"/>
+    <text x="58" y="128" text-anchor="middle" font-family="Italiana, serif" font-size="76" fill="#a3812f">A</text>
+    <text x="100" y="118" text-anchor="middle" font-family="Playfair Display, serif" font-size="26" fill="rgba(163,129,47,.6)" font-style="italic">&amp;</text>
+    <text x="144" y="128" text-anchor="middle" font-family="Cinzel, serif" font-size="60" fill="#c6a35c">R</text>
+    <text x="100" y="154" text-anchor="middle" font-family="Cinzel, serif" font-size="9" fill="#425c39" letter-spacing="4">NOV 2026</text>
+  </svg>
+  <div class="landing-greet">— WITH JOYFUL HEARTS —</div>
+  <div class="landing-guest" id="landingGuest"></div>
+  <h1 class="landing-names">Anjali<span class="amp">&amp;</span>Ranju</h1>
+  <p class="landing-tagline">Two souls, one journey — held together by God's grace.</p>
+  <div class="landing-date" style="font-size:clamp(17px,4.5vw,22px);letter-spacing:.3em;color:var(--gold);font-weight:600">7 NOVEMBER 2026</div>
+  <div class="landing-divider"><span></span><div class="dot"></div><span></span></div>
+  <button class="enter-btn" onclick="openInvite()">
+    OPEN INVITATION
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+  <div class="landing-venue">KOZHUVANAL · PALA · KERALA</div>
+</div>
+
+<div id="main">
+
+<!-- INVITE -->
+<section class="invite">
+  <div class="reveal">
+    <span style="font-family:'Cinzel',serif;letter-spacing:.42em;font-size:9.5px;color:var(--green);display:block;margin-bottom:20px">— WEDDING INVITATION —</span>
+    <div class="invite-personal" id="invitePersonal"></div>
+    <h2 class="invite-names">Anjali<span class="amp">&amp;</span>Ranju</h2>
+    <div class="invite-body">
+      <p><span class="accent">Together with their families,</span> Anjali &amp; Ranju joyfully invite you to share in the celebration of their holy matrimony.</p>
+      <p>With hearts full of gratitude, we invite you to witness our vows at the Nuptial Mass and to celebrate with us at the Reception that follows.</p>
+      <p>Your presence and blessings will make our day complete.</p>
+    </div>
+    <div class="verse-block">
+      <div class="verse-text">"Love is patient, love is kind. It always protects, always trusts, always hopes, always perseveres. Love never fails."</div>
+      <div class="verse-ref">1 CORINTHIANS 13 : 4, 7-8</div>
+    </div>
+    <div class="divider"><span></span><div class="dot"></div><span></span></div>
+  </div>
+</section>
+
+<!-- DATE BANNER -->
+<section style="background:var(--bg2);border-bottom:1px solid var(--rule)">
+  <div class="reveal">
+    <div style="background:var(--green);padding:18px 24px;text-align:center">
+      <div style="font-family:'Cinzel',serif;letter-spacing:.25em;font-size:10px;color:#f7f2e7;white-space:nowrap">SATURDAY · 7 NOVEMBER 2026 &nbsp;·&nbsp; WITH GOD'S GRACE</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE COUPLE -->
+<section style="background:var(--bg);padding:72px 24px 64px;text-align:center;border-bottom:1px solid var(--rule)">
+  <div class="reveal">
+    <div class="section-eyebrow">— THE COUPLE —</div>
+    <h2 style="font-family:'Italiana',serif;font-size:clamp(58px,15vw,96px);color:var(--ink);line-height:.95;margin-bottom:52px">
+      Anjali <span style="font-size:.52em;color:var(--gold)">&amp;</span> Ranju
+    </h2>
+
+    <!-- BRIDE -->
+    <div style="margin-bottom:52px">
+      <div style="font-family:'Cinzel',serif;letter-spacing:.42em;font-size:9.5px;color:var(--gold);margin-bottom:22px">B R I D E</div>
+      <div style="font-family:'Italiana',serif;font-size:clamp(32px,8vw,46px);color:var(--ink);margin-bottom:14px;font-weight:700">Anjali Mary Thomas</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--muted);line-height:2">
+        D/o Thomas G.K &amp; Daisy Thomas<br>
+        Kunnappallil House, Kanjirapally
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 52px;max-width:180px">
+      <span style="flex:1;height:1px;background:var(--rule)"></span>
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>
+      <span style="flex:1;height:1px;background:var(--rule)"></span>
+    </div>
+
+    <!-- GROOM -->
+    <div>
+      <div style="font-family:'Cinzel',serif;letter-spacing:.42em;font-size:9.5px;color:var(--gold);margin-bottom:22px">G R O O M</div>
+      <div style="font-family:'Italiana',serif;font-size:clamp(32px,8vw,46px);color:var(--ink);margin-bottom:14px;font-weight:700">Ranju Raju</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--muted);line-height:2">
+        S/o Raju Mathew &amp; Kochurani Raju<br>
+        Thekkemuriyil House, Kozhuvanal
+      </div>
+    </div>
+
+    <div class="divider"><span></span><div class="dot"></div><span></span></div>
+  </div>
+</section>
+
+<!-- FAMILIES -->
+<section class="families">
+  <div class="reveal">
+    <div class="section-eyebrow">— MEET OUR FAMILIES —</div>
+    <h2 class="section-title">With Blessings From</h2>
+    <div class="family-grid">
+
+      <!-- BRIDE SIDE -->
+      <div class="family-card">
+        <div class="family-card-head">
+          <div class="family-photo-wrap avatar-wrap" data-slot="avatar_bride" onclick="pickAvatar('avatar_bride',this)">
+            <div class="family-photo">A</div>
+            <div class="avatar-upload-btn" style="display:none">+</div>
+          </div>
+          <div>
+            <div class="family-card-name">Anjali Mary Thomas</div>
+            <div class="family-card-role">The Bride</div>
+          </div>
+        </div>
+        <div class="family-detail">
+          <strong>PARENTS</strong>
+          Thomas G.K &amp; Daisy Thomas<br>
+          Kunnappallil House, Kanjirapally
+
+          <div class="family-sep"><span></span><i>✦</i><span></span></div>
+
+          <strong>SIBLINGS</strong>
+          Asha Thomas (Elder Sister)<br>
+          Amal James (Brother-in-law)
+        </div>
+      </div>
+
+      <!-- GROOM SIDE -->
+      <div class="family-card">
+        <div class="family-card-head">
+          <div class="family-photo-wrap avatar-wrap" style="background:linear-gradient(135deg,var(--green2),var(--gold),var(--green))" data-slot="avatar_groom" onclick="pickAvatar('avatar_groom',this)">
+            <div class="family-photo" style="font-family:'Cinzel',serif;font-size:24px">R</div>
+            <div class="avatar-upload-btn" style="display:none">+</div>
+          </div>
+          <div>
+            <div class="family-card-name">Ranju Raju</div>
+            <div class="family-card-role">The Groom</div>
+          </div>
+        </div>
+        <div class="family-detail">
+          <strong>PARENTS</strong>
+          Raju Mathew &amp; Kochurani Raju<br>
+          Thekkemuriyil House, Kozhuvanal
+
+          <div class="family-sep"><span></span><i>✦</i><span></span></div>
+
+          <strong>SIBLINGS</strong>
+          Mary Raju Mathew (Elder Sister)<br>
+          Roshan Raju (Younger Brother)
+        </div>
+      </div>
+
+    </div>
+    <div class="divider"><span></span><div class="dot"></div><span></span></div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="details">
+  <div class="reveal">
+    <div class="section-eyebrow" style="text-align:center">— THE OCCASIONS —</div>
+    <h2 class="section-title" style="text-align:center">Join Us</h2>
+    <p class="details-lede">Two celebrations, one blessed beginning. We would be honoured to have you with us.</p>
+
+    <!-- EVENT 01 — WEDDING -->
+    <div class="event-card">
+      <div class="event-head"><div class="event-num">01</div><div class="event-title">NUPTIAL MASS &amp; WEDDING</div></div>
+      <div class="event-row">
+        <div class="row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="row-body"><div class="row-label">DATE &amp; TIME</div><div class="row-value">Saturday, 7 Nov 2026</div><div class="row-sub">3:00 PM onwards</div></div>
+      </div>
+      <div class="event-row">
+        <div class="row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
+        <div class="row-body"><div class="row-label">VENUE</div><div class="row-value">St. John Nepumsian's Forane Church</div><div class="row-sub">Cherpunkal - Kozhuvanal Road, Puliyannoor, Kozhuvanal, Kerala 686573</div></div>
+      </div>
+      <div class="event-actions">
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/YmnR98V7LvunW2RB9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>DIRECTIONS</a>
+        <button class="btn btn-ghost" onclick="addToCal('Wedding — Anjali &amp; Ranju','2026-11-07T15:00','2026-11-07T17:00','St. John Nepumsians Forane Church, Kozhuvanal, Kerala 686573')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>CALENDAR</button>
+      </div>
+    </div>
+
+    <!-- EVENT 02 — RECEPTION -->
+    <div class="event-card">
+      <div class="event-head"><div class="event-num">02</div><div class="event-title">WEDDING RECEPTION</div></div>
+      <div class="event-row">
+        <div class="row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="row-body"><div class="row-label">DATE &amp; TIME</div><div class="row-value">Saturday, 7 Nov 2026</div><div class="row-sub">6:00 PM onwards</div></div>
+      </div>
+      <div class="event-row">
+        <div class="row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
+        <div class="row-body"><div class="row-label">VENUE</div><div class="row-value">Orchard River Mansion</div><div class="row-sub">Near Murikkumpuzha Devi Temple, Parappaly Road, Pala, Kerala 686575</div></div>
+      </div>
+      <div class="event-actions">
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/nACwV9v3fZR3K2sz5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>DIRECTIONS</a>
+        <button class="btn btn-ghost" onclick="addToCal('Reception — Anjali &amp; Ranju','2026-11-07T18:00','2026-11-07T21:00','Orchard River Mansion, Parappaly Road, Pala, Kerala 686575')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>CALENDAR</button>
+      </div>
+    </div>
+
+    <div class="divider"><span></span><div class="dot"></div><span></span></div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp">
+  <div class="reveal">
+    <div class="section-eyebrow">— YOUR PRESENCE —</div>
+    <h2 class="section-title">Will You Be Joining Us?</h2>
+    <p class="rsvp-copy">Kindly let us know by <strong style="color:var(--gold)">30 September 2026</strong>. We'd love to have you with us.</p>
+    <div class="rsvp-greet" id="rsvpGreet"></div>
+    <div class="rsvp-form" id="rsvpForm">
+      <h3>RSVP</h3>
+      <div class="note">Just a few quick details 🌿</div>
+      <div class="field">
+        <label class="field-label"><span class="num">1</span>WILL YOU BE ATTENDING?</label>
+        <div class="rsvp-attend-toggle">
+          <button type="button" class="toggle-btn active" id="attendYes" onclick="setAttending(true)">YES, I'LL JOIN</button>
+          <button type="button" class="toggle-btn" id="attendNo" onclick="setAttending(false)">CAN'T MAKE IT</button>
+        </div>
+      </div>
+      <div id="fullForm">
+        <div class="field" id="nameField">
+          <label class="field-label"><span class="num">2</span>YOUR NAME</label>
+          <input type="text" class="input" id="guestNameInput" placeholder="e.g., Thomas Mathew">
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">3</span>WHICH FUNCTIONS WILL YOU ATTEND?</label>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px;font-style:italic">Tap a function, then set how many people (including +1 guests) will be joining.</p>
+          <div class="event-pick" data-ev="Wedding">
+            <label class="chk"><input type="checkbox" class="ev-check" value="Wedding"><div><div class="chk-title">Nuptial Mass &amp; Wedding</div><span class="chk-sub">Sat, 7 Nov · 3:00 PM · Kozhuvanal Church</span></div></label>
+            <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining?</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
+          </div>
+          <div class="event-pick" data-ev="Reception">
+            <label class="chk"><input type="checkbox" class="ev-check" value="Reception"><div><div class="chk-title">Wedding Reception</div><span class="chk-sub">Sat, 7 Nov · 6:00 PM · Orchard River Mansion</span></div></label>
+            <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining?</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
+          </div>
+        </div>
+        <div class="field" id="accommodationField">
+          <label class="field-label"><span class="num">4</span>ACCOMMODATION FOR 7TH NOV NIGHT?</label>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px;font-style:italic">Do you require a place to stay for the night of 7th November?</p>
+          <div class="rsvp-attend-toggle">
+            <button type="button" class="toggle-btn" id="accYes" onclick="setAccommodation(true)">YES, PLEASE</button>
+            <button type="button" class="toggle-btn active" id="accNo" onclick="setAccommodation(false)">NOT NEEDED</button>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label"><span class="num">5</span>A NOTE FOR THE COUPLE <span style="opacity:.6;font-weight:400">(optional)</span></label>
+          <textarea class="textarea" id="rsvpMessage" placeholder="Share a blessing or a message…" style="min-height:70px;resize:none"></textarea>
+        </div>
+      <button class="submit-btn" id="submitBtn" onclick="submitRsvp()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+        <span>CONFIRM RSVP</span>
+      </button>
+      </div>
+    </div>
+    <div class="success" id="success">
+      <div class="check">✓</div>
+      <h3>Thank you!</h3>
+      <p id="successMsg">Your RSVP has been received with love.</p>
+    </div>
+    <div class="rsvp-existing" id="rsvpExisting">
+      <div class="ex-head">
+        <div class="ex-icon">✓</div>
+        <h3>Your RSVP</h3>
+        <div class="ex-sub" id="exSubMsg">You've already responded — here's what we have.</div>
+      </div>
+      <div class="ex-row"><div class="ex-lbl">ATTENDING</div><div class="ex-val" id="exAttending">—</div></div>
+      <div class="ex-row" id="exEventsRow"><div class="ex-lbl">FUNCTIONS</div><div class="ex-tags" id="exEvents"></div></div>
+      <div class="ex-row" id="exAccRow" style="display:none"><div class="ex-lbl">ACCOMMODATION</div><div class="ex-val" id="exAcc"></div></div>
+      <div class="ex-row" id="exMsgRow" style="display:none"><div class="ex-lbl">YOUR MESSAGE</div><div class="ex-val" id="exMsg"></div></div>
+      <div class="ex-row"><div class="ex-lbl">REPLIED ON</div><div class="ex-val" id="exTime">—</div></div>
+      <button class="ex-edit-btn" onclick="editRsvp()">CHANGE MY RESPONSE</button>
+    </div>
+  </div>
+</section>
+
+<!-- WISHES WALL -->
+<section class="wishes">
+  <div class="reveal">
+    <div class="section-eyebrow" style="text-align:center">— SEND YOUR LOVE —</div>
+    <h2 class="section-title" style="text-align:center">Wishes Wall</h2>
+    <div class="wish-form">
+      <input class="input" id="wisherName" placeholder="Your name" style="margin-bottom:10px"/>
+      <textarea id="wisherMsg" placeholder="Write a blessing or warm wish for Anjali &amp; Ranju…"></textarea>
+      <button class="wfl-submit" onclick="submitWish()">SEND WISH ✦</button>
+    </div>
+    <div id="wwall">
+      <div id="wgrid"></div>
+      <div id="loadmore-wrap"><button id="loadMoreBtn" onclick="loadMore()">LOAD MORE</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="section-eyebrow">— GET IN TOUCH —</div>
+  <h3>Any questions?</h3>
+  <p>We'd love to hear from you — reach out to us anytime.</p>
+  <div class="contact-grid">
+    <a class="cbtn cbtn-call" href="https://wa.me/918606451976" target="_blank" rel="noopener" style="grid-column:span 2">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A12 12 0 003.48 20.52L2 22l1.55-1.45A12 12 0 1020.52 3.48z"/></svg>
+      <span><span class="contact-person">Ranju / Anjali</span>+91 86064 51976</span>
+    </a>
+    <a class="cbtn cbtn-call" href="tel:+918606451976">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <span><span class="contact-person">Call</span>+91 86064 51976</span>
+    </a>
+    <a class="cbtn cbtn-call" href="tel:+918113845854">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <span><span class="contact-person">Alternate</span>+91 81138 45854</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="couple-initials">A &nbsp;·&nbsp; R</div>
+  <div class="tagline">With love &amp; gratitude —<br>Anjali &amp; Ranju</div>
+  <div class="brand" id="brandLink" oncontextmenu="return false">INVITATION BY <span style="color:var(--gold2)" id="digiwedLink">DIGIWED</span></div>
+  <button onclick="enableEditMode()" style="margin-top:14px;padding:10px 28px;background:transparent;border:1px solid rgba(163,129,47,.25);border-radius:4px;font-family:'Cinzel',serif;letter-spacing:.25em;font-size:9px;color:rgba(198,163,92,.45);cursor:pointer;-webkit-tap-highlight-color:transparent">ADMIN</button>
+  <div class="foot-social">
+    <a href="https://instagram.com/digi_.wed" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.25.07 1.65.07 4.85s-.01 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.25.06-1.65.07-4.85.07s-3.6-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s.01-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.4 2.21 8.8 2.2 12 2.2zm0 1.62c-3.15 0-3.52.01-4.76.07-.9.04-1.39.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.33s.01 3.09.07 4.33c.04.9.19 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.33s-.01-3.09-.07-4.33c-.04-.9-.19-1.39-.32-1.71a2.86 2.86 0 00-.69-1.06 2.86 2.86 0 00-1.06-.69c-.32-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07zm0 2.76A5.42 5.42 0 1112 17.42 5.42 5.42 0 0112 6.58zm0 1.62a3.8 3.8 0 100 7.6 3.8 3.8 0 000-7.6zm5.6-2.9a1.27 1.27 0 110 2.54 1.27 1.27 0 010-2.54z"/></svg></a>
+    <a href="https://wa.me/919747986523?text=I%20want%20to%20know%20more%20about%20digital%20wedding%20invitation" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+    <a href="https://digiwed.online" target="_blank" rel="noopener" aria-label="Website" title="Website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.9 3 2.9 16 0 19M12 2.5c-2.9 3-2.9 16 0 19"/></svg></a>
+  </div>
+</footer>
+
+</div><!-- /main -->
+
+<button id="bgmBtn" onclick="bgmToggle()">
+  <div class="bgm-ring"></div>
+  <svg id="bgmPlay" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#425c39" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+  </svg>
+  <svg id="bgmMute" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a7a4a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="3" y1="3" x2="21" y2="21"/>
+  </svg>
+</button>
+<audio id="bgmAudio" loop preload="auto"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CLOUDINARY + FIREBASE CONFIG ─────────────────────────────────────────
+  const CLOUD_NAME    = 'dormnrhdf';
+  const UPLOAD_PRESET = 'ml_default';
+  const COUPLE_FOLDER = 'digiwed-invitations/anjali-ranju';
+  const IMG_PATH  = 'anjali-ranju/media';
+  const RSVP_PATH = 'anjali-ranju/rsvp';
+  const WISH_PATH = 'anjali-ranju/wishes';
+  const ADMIN_PIN = '2026AR';
+  let editMode = false;
+
+  // ── FIREBASE ────────────────────────────────────────────────────────────
+  let db = null;
+  try {
+    if(typeof firebase !== 'undefined'){
+      const cfg = {
+        apiKey:"AIzaSy841fvxVl1KeHOro6WKJ72o22izuCpJ-b4",
+        authDomain:"yaseen-jumana-wedding.firebaseapp.com",
+        databaseURL:"https://yaseen-jumana-wedding-default-rtdb.firebaseio.com",
+        projectId:"yaseen-jumana-wedding",
+        storageBucket:"yaseen-jumana-wedding.firebasestorage.app",
+        messagingSenderId:"355557621111",
+        appId:"1:355557621111:web:d0b78c34bfe5a53b69f572"
+      };
+      if(!firebase.apps.length) firebase.initializeApp(cfg);
+      db = firebase.database(); window._db = db;
+    }
+  } catch(e){ console.warn('Firebase:', e); }
+
+  // ── ADMIN / EDIT MODE ─────────────────────────────────────────────────────
+  window.enableEditMode = function(){
+    const pin = prompt('Enter admin PIN:');
+    if(pin !== ADMIN_PIN){ showToast('INCORRECT PIN'); return; }
+    editMode = true;
+    if(!document.getElementById('main').classList.contains('show')) openInvite();
+    setTimeout(()=>{
+      document.querySelectorAll('.img-slot-add').forEach(el => el.style.display='flex');
+      document.querySelectorAll('.avatar-upload-btn').forEach(el => el.style.display='flex');
+      const bgBtn = document.getElementById('landingBgPlusBtn');
+      if(bgBtn) bgBtn.style.display = 'flex';
+      showToast('EDIT MODE ON ✦ — tap + to add photos');
+      if(typeof bgmEnableAdmin==='function') bgmEnableAdmin();
+    }, 400);
+  };
+  function enableEditMode(){ window.enableEditMode(); }
+
+  // ── BGM ─────────────────────────────────────────────────────────────────
+  var _bgmReady=false, _bgmAdmin=false;
+  var _bgmAudio=document.getElementById('bgmAudio');
+  var _bgmPlayIcon=document.getElementById('bgmPlay');
+  var _bgmMuteIcon=document.getElementById('bgmMute');
+
+  function _bgmSetIcon(playing){
+    _bgmPlayIcon.style.display = playing ? 'block' : 'none';
+    _bgmMuteIcon.style.display = playing ? 'none'  : 'block';
+  }
+  function _bgmInit(){
+    var attempts=0;
+    var t=setInterval(function(){
+      attempts++;
+      if(window._db){ clearInterval(t); _bgmFetch(); }
+      else if(attempts>20){ clearInterval(t); }
+    },500);
+  }
+  function _bgmFetch(){
+    window._db.ref(IMG_PATH+'/bgm_track').once('value',function(snap){
+      var d=snap.val();
+      if(d&&d.url) _bgmLoadUrl(d.url);
+    });
+  }
+  function _bgmLoadUrl(url){
+    _bgmAudio.src=url; _bgmReady=true;
+    _bgmAudio.addEventListener('canplay',function oncp(){
+      _bgmAudio.removeEventListener('canplay',oncp);
+      _bgmAudio.play().catch(function(){});
+    });
+    _bgmAudio.load();
+  }
+  window.bgmToggle=function(){
+    if(_bgmAdmin){ _bgmPick(); return; }
+    if(!_bgmReady){ return; }
+    if(_bgmAudio.paused){ _bgmAudio.play().catch(function(){}); }
+    else { _bgmAudio.pause(); }
+  };
+  _bgmAudio.addEventListener('play',  function(){ _bgmSetIcon(true); });
+  _bgmAudio.addEventListener('pause', function(){ _bgmSetIcon(false); });
+  _bgmAudio.addEventListener('ended', function(){ _bgmSetIcon(false); });
+  window.bgmEnableAdmin=function(){
+    _bgmAdmin=true;
+    document.getElementById('bgmBtn').classList.add('admin-mode');
+    showToast('TAP ♪ TO UPLOAD MUSIC');
+  };
+  function _bgmPick(){
+    var inp=document.createElement('input');
+    inp.type='file'; inp.accept='audio/*';
+    inp.onchange=function(e){
+      var file=e.target.files[0]; if(!file) return;
+      showToast('UPLOADING…');
+      var fd=new FormData();
+      fd.append('file',file);
+      fd.append('upload_preset',UPLOAD_PRESET);
+      fd.append('folder',COUPLE_FOLDER+'/audio');
+      var xhr=new XMLHttpRequest();
+      xhr.open('POST','https://api.cloudinary.com/v1_1/'+CLOUD_NAME+'/video/upload');
+      xhr.onload=function(){
+        try{
+          var res=JSON.parse(xhr.responseText);
+          if(!res.secure_url) throw 0;
+          if(window._db) window._db.ref(IMG_PATH+'/bgm_track').set({url:res.secure_url,ts:Date.now()});
+          _bgmAdmin=false;
+          document.getElementById('bgmBtn').classList.remove('admin-mode');
+          _bgmLoadUrl(res.secure_url);
+          showToast('MUSIC UPLOADED ❖');
+        }catch(err){ showToast('UPLOAD FAILED'); }
+      };
+      xhr.onerror=function(){ showToast('UPLOAD FAILED'); };
+      xhr.send(fd);
+    };
+    inp.click();
+  }
+
+  // ── IMAGE UPLOAD ──────────────────────────────────────────────────────────
+  function uploadToCloudinary(file){
+    return new Promise(function(resolve, reject){
+      const url = 'https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/image/upload';
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('upload_preset', UPLOAD_PRESET);
+      fd.append('folder', COUPLE_FOLDER);
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
+      xhr.onload = function(){
+        if(xhr.status === 200){
+          try{
+            const data = JSON.parse(xhr.responseText);
+            if(data.secure_url) resolve(data.secure_url);
+            else{ showToast('ERROR: ' + (data.error && data.error.message || 'Failed')); reject(new Error('No URL')); }
+          } catch(e){ reject(e); }
+        } else { showToast('UPLOAD ERROR: ' + xhr.status); reject(new Error('Status: ' + xhr.status)); }
+      };
+      xhr.onerror = function(){ showToast('NETWORK ERROR'); reject(new Error('Network error')); };
+      xhr.send(fd);
+    });
+  }
+  function saveImgData(slotKey, data){ if(db) db.ref(IMG_PATH + '/' + slotKey).set(data); }
+
+  window.applyImage = function(slotKey, val){
+    if(slotKey === 'landing_bg'){
+      const img = document.getElementById('landingBgImg');
+      const scrim = document.getElementById('landingScrim');
+      if(img){ img.src = val.url; img.style.display = 'block'; }
+      if(scrim){ scrim.style.display = 'block'; }
+      return;
+    }
+    const el = document.querySelector('[data-slot="'+slotKey+'"]');
+    if(!el) return;
+    if(slotKey.startsWith('avatar_')){
+      const circle = el.querySelector('.family-photo');
+      if(!circle) return;
+      circle.innerHTML = '';
+      circle.style.cssText += ';overflow:hidden;padding:0;position:relative;';
+      const img = document.createElement('img');
+      img.className = 'slot-img';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;';
+      img.onerror = function(){ this.remove(); };
+      img.src = val.url;
+      circle.appendChild(img);
+      el.onclick = function(){ if(editMode) pickFile(slotKey); };
+    }
+  };
+
+  function pickFile(slotKey){
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = 'image/*';
+    inp.onchange = function(e){
+      const file = e.target.files[0];
+      if(!file) return;
+      showToast('UPLOADING…');
+      uploadToCloudinary(file).then(function(url){
+        const data = {url:url, x:50, y:50, zoom:1};
+        saveImgData(slotKey, data);
+        applyImage(slotKey, data);
+        showToast('DONE ✦');
+      }).catch(function(err){ console.error(err); showToast('UPLOAD FAILED'); });
+    };
+    inp.click();
+  }
+  window.pickAvatar = function(slotKey){ if(editMode) pickFile(slotKey); };
+  function pickAvatar(s){ window.pickAvatar(s); }
+
+  function startImageListener(){
+    if(!db){ setTimeout(startImageListener, 500); return; }
+    db.ref(IMG_PATH).on('value', snap => {
+      if(!snap.exists()) return;
+      snap.forEach(child => {
+        const val = child.val();
+        if(val && val.url) applyImage(child.key, val);
+      });
+    });
+  }
+
+  // Long-press DIGIWED → dashboard
+  (function(){
+    const dg = document.getElementById('digiwedLink');
+    if(!dg) return;
+    let t;
+    const go = ()=>{ t=setTimeout(()=>{ window.location.href='dashboard.html'; },1000); };
+    const cancel = ()=>clearTimeout(t);
+    dg.addEventListener('touchstart',go,{passive:true});
+    dg.addEventListener('touchend',cancel,{passive:true});
+    dg.addEventListener('mousedown',go);
+    dg.addEventListener('mouseup',cancel);
+  })();
+
+  // ── GUEST PARAM ───────────────────────────────────────────────────────────
+  const urlParams = new URLSearchParams(window.location.search);
+  const GUEST_NAME = (urlParams.get('guest')||'').trim();
+  if(GUEST_NAME){
+    document.getElementById('landingGuest').textContent = 'Dear ' + GUEST_NAME + ',';
+    document.getElementById('invitePersonal').textContent = 'Dearest ' + GUEST_NAME + ',';
+    document.getElementById('rsvpGreet').textContent = GUEST_NAME + ", we'd love to have you with us 🌿";
+    document.getElementById('nameField').style.display = 'none';
+  }
+
+  // ── OPEN INVITE ───────────────────────────────────────────────────────────
+  function openInvite(){
+    document.getElementById('landing').classList.add('gone');
+    document.getElementById('main').classList.add('show');
+    document.body.style.overflow = 'auto';
+    setTimeout(()=>{
+      const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    },100);
+    window.addEventListener('scroll',()=>{
+      const b = document.getElementById('mono-badge');
+      if(window.scrollY > 180) b.classList.add('show'); else b.classList.remove('show');
+    },{passive:true});
+    checkExistingRsvp();
+    loadWishes();
+    _bgmInit();
+    setTimeout(startImageListener, 800);
+    setTimeout(startImageListener, 3000);
+    const bgBtn = document.getElementById('landingBgPlusBtn');
+    if(bgBtn && !bgBtn._wired){
+      bgBtn._wired = true;
+      bgBtn.addEventListener('click', function(e){ e.stopPropagation(); pickFile('landing_bg'); });
+    }
+  }
+  document.body.style.overflow = 'hidden';
+  // Load landing hero as early as possible
+  setTimeout(startImageListener, 400);
+
+  // ── RSVP FORM WIRING ──────────────────────────────────────────────────────
+  document.querySelectorAll('.ev-check').forEach(cb=>{
+    cb.addEventListener('change',()=>{
+      const pick = cb.closest('.event-pick');
+      const cnt  = pick.querySelector('.ev-count');
+      if(cb.checked){pick.classList.add('active');cnt.style.display='flex';}
+      else{pick.classList.remove('active');cnt.style.display='none';pick.querySelector('.mini-count').textContent='1';}
+    });
+  });
+  function evCount(btn,delta){
+    const s = btn.parentElement.querySelector('.mini-count');
+    let n = parseInt(s.textContent,10)||1;
+    s.textContent = Math.max(1,Math.min(20,n+delta));
+  }
+  let attending = true;
+  function setAttending(val){
+    attending = val;
+    document.getElementById('attendYes').classList.toggle('active', val);
+    document.getElementById('attendNo').classList.toggle('active',!val);
+    document.getElementById('fullForm').style.display = val ? 'block' : 'none';
+  }
+  let accommodation = false;
+  function setAccommodation(val){
+    accommodation = val;
+    document.getElementById('accYes').classList.toggle('active', val);
+    document.getElementById('accNo').classList.toggle('active',!val);
+  }
+
+  function addToCal(title,start,end,loc){
+    const fmt = s=>s.replace(/[-:]/g,'');
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${fmt(start+'00')}/${fmt(end+'00')}&location=${encodeURIComponent(loc)}`;
+    window.open(url,'_blank');
+  }
+  function showToast(m){
+    const t=document.getElementById('toast');
+    t.textContent=m; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),3000);
+  }
+
+  // ── RSVP LOGIC ────────────────────────────────────────────────────────────
+  let existingRsvpKey = null;
+  function checkExistingRsvp(){
+    if(!GUEST_NAME || !db) return;
+    db.ref(RSVP_PATH).orderByChild('name').equalTo(GUEST_NAME).limitToFirst(1).once('value', snap => {
+      if(!snap.exists()) return;
+      const data = snap.val();
+      const key  = Object.keys(data)[0];
+      existingRsvpKey = key;
+      showExistingRsvp(data[key]);
+    });
+  }
+  function showExistingRsvp(r){
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpExisting').classList.add('show');
+    document.getElementById('exAttending').textContent = r.attending ? '✓ Yes, I will be attending' : '✗ Unable to attend';
+    document.getElementById('exTime').textContent = r.time || '—';
+    if(r.attending && r.events && r.events.length){
+      document.getElementById('exEventsRow').style.display = 'block';
+      document.getElementById('exEvents').innerHTML = r.events.map(e => {
+        const n = (r.eventsDetail && r.eventsDetail[e]) || r.members || 1;
+        return `<span class="ex-tag">${e} × ${n}</span>`;
+      }).join('');
+    } else {
+      document.getElementById('exEventsRow').style.display = 'none';
+    }
+    if(r.attending){
+      document.getElementById('exAccRow').style.display = 'block';
+      document.getElementById('exAcc').textContent = r.accommodation ? 'Yes — needed for 7 Nov night' : 'Not required';
+    } else {
+      document.getElementById('exAccRow').style.display = 'none';
+    }
+    if(r.message){
+      document.getElementById('exMsgRow').style.display = 'block';
+      document.getElementById('exMsg').textContent = r.message;
+    }
+    document.getElementById('exSubMsg').textContent = `You've already responded${GUEST_NAME?' '+GUEST_NAME:''}. Here's what we have.`;
+  }
+  function editRsvp(){
+    if(existingRsvpKey && db) db.ref(RSVP_PATH + '/' + existingRsvpKey).remove();
+    document.getElementById('rsvpExisting').classList.remove('show');
+    document.getElementById('rsvpForm').style.display = 'block';
+    existingRsvpKey = null;
+  }
+  function submitRsvp(){
+    const name = GUEST_NAME || document.getElementById('guestNameInput').value.trim();
+    if(!name){showToast('Please enter your name');return;}
+    let eventsList=[],eventsDetail={},totalMembers=0,maxMembers=0;
+    if(attending){
+      document.querySelectorAll('.ev-check:checked').forEach(cb=>{
+        const ev=cb.value, pick=cb.closest('.event-pick');
+        const n=parseInt(pick.querySelector('.mini-count').textContent,10)||1;
+        eventsList.push(ev); eventsDetail[ev]=n; totalMembers+=n;
+        if(n>maxMembers) maxMembers=n;
+      });
+      if(eventsList.length===0){showToast('Please select at least one function');return;}
+    }
+    const msg = document.getElementById('rsvpMessage').value.trim();
+    const entry = {
+      name, attending,
+      events:eventsList, eventsDetail,
+      members:maxMembers, totalMembers,
+      accommodation: attending ? accommodation : false,
+      message:msg,
+      time:new Date().toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),
+      ts:Date.now()
+    };
+    const btn = document.getElementById('submitBtn');
+    btn.disabled=true; btn.querySelector('span').textContent='SENDING…';
+    const done=()=>{
+      document.getElementById('rsvpForm').style.display='none';
+      document.getElementById('success').classList.add('show');
+      document.getElementById('successMsg').textContent = attending
+        ? `Thank you, ${name}! We can't wait to celebrate with you.`
+        : `Thank you, ${name}. You'll be missed, but your blessings mean the world.`;
+    };
+    if(!db){setTimeout(done,500);return;}
+    const key=(name.replace(/[^a-zA-Z0-9]/g,'_').toLowerCase()||'guest')+'_'+Date.now();
+    db.ref(RSVP_PATH+'/'+key).set(entry).then(done).catch(err=>{
+      btn.disabled=false; btn.querySelector('span').textContent='CONFIRM RSVP';
+      showToast('Failed. Please try again.'); console.error(err);
+    });
+  }
+
+  // ── WISHES WALL ───────────────────────────────────────────────────────────
+  const PAGE_SIZE = 6;
+  let allWishes = [];
+  let visibleWishCount = 0;
+  let recentlySubmittedTs = null;
+
+  function loadWishes(){
+    if(!db) return;
+    db.ref(WISH_PATH).orderByKey().limitToLast(500).once('value', snap => {
+      allWishes = [];
+      snap.forEach(c => { allWishes.push({key:c.key,...c.val()}); });
+      allWishes.reverse();
+      visibleWishCount = 0;
+      renderWishes();
+    }, err => console.error('loadWishes failed:', err));
+  }
+  function renderWishes(){
+    const grid = document.getElementById('wgrid');
+    if(visibleWishCount === 0) grid.innerHTML = '';
+    const nextCount = Math.min(visibleWishCount + PAGE_SIZE, allWishes.length);
+    allWishes.slice(visibleWishCount, nextCount).forEach(w => grid.insertAdjacentHTML('beforeend', wishCard(w)));
+    visibleWishCount = nextCount;
+    document.getElementById('loadmore-wrap').style.display = visibleWishCount < allWishes.length ? 'block' : 'none';
+  }
+  function loadMore(){ renderWishes(); }
+  function wishCard(w){
+    return `<div class="wish-card">
+      <div class="wish-card-name">${esc(w.name)}</div>
+      <div class="wish-card-msg">${esc(w.msg)}</div>
+      <div class="wish-card-time">${w.time||''}</div>
+    </div>`;
+  }
+  function esc(s){ const d=document.createElement('div');d.textContent=s||'';return d.innerHTML; }
+  function submitWish(){
+    const name = document.getElementById('wisherName').value.trim();
+    const msg  = document.getElementById('wisherMsg').value.trim();
+    if(!name || !msg){ showToast('Please enter your name and wish'); return; }
+    const btn = document.querySelector('.wfl-submit');
+    const ts = Date.now();
+    if(recentlySubmittedTs && ts - recentlySubmittedTs < 10000){ showToast('Please wait before sending again'); return; }
+    btn.disabled=true; btn.textContent='SENDING…';
+    const entry = { name, msg, time: new Date().toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}), ts };
+    if(!db){ showToast('Wish sent! ✦'); btn.disabled=false; btn.textContent='SEND WISH ✦'; return; }
+    db.ref(WISH_PATH).push(entry).then(()=>{
+      recentlySubmittedTs = ts;
+      document.getElementById('wisherName').value='';
+      document.getElementById('wisherMsg').value='';
+      btn.textContent='SEND WISH ✦'; btn.disabled=false;
+      showToast('Wish sent! ✦');
+      loadWishes();
+    }).catch(e=>{ console.error(e); showToast('Failed. Try again.'); btn.disabled=false; btn.textContent='SEND WISH ✦'; });
+  }
+</script>
+
+</body>
+</html>
