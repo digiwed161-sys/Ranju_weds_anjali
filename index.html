@@ -967,7 +967,7 @@ a{color:inherit;text-decoration:none}
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.scale(dpr, dpr);
     const colors = ['#a3812f','#c6a35c','#e9dcc0','#425c39','#567045','#f7f2e7','#ffffff','#e8b94a','#d98a5c','#b9902f'];
-    const GRAV = 0.34, DRAG = 0.992;
+    const GRAV = 0.26, DRAG = 0.994;   // gentler pull + more drag → pieces linger and drift down slowly
     const parts = [];
     // A burst shoots pieces high — vy is scaled so they climb toward the top,
     // then gravity + flutter carries them back down.
@@ -987,15 +987,24 @@ a{color:inherit;text-decoration:none}
           swaySpeed: 0.04 + Math.random() * 0.06,
           swayAmp: 0.7 + Math.random() * 1.4,
           type: shape < 0.4 ? 'rect' : (shape < 0.72 ? 'strip' : 'circle'),
-          life: 0, ttl: 300 + Math.random() * 160
+          life: 0, ttl: 520 + Math.random() * 260   // live much longer before fading
         });
       }
     }
     const UP = -Math.PI / 2;
-    // Two bottom-corner poppers aimed steeply up, plus a central fountain.
-    burst(W * 0.05, H * 1.0, UP + 0.30, 0.55, 120, 27);   // bottom-left → up & inward
-    burst(W * 0.95, H * 1.0, UP - 0.30, 0.55, 120, 27);   // bottom-right → up & inward
-    burst(W * 0.50, H * 1.02, UP,       0.80, 150, 28);   // center fountain, straight up
+    // One wave = two bottom-corner poppers aimed steeply up + a central fountain.
+    function fireWave(scale){
+      burst(W * 0.05, H * 1.0,  UP + 0.30, 0.55, Math.round(90 * scale), 27);   // bottom-left → up & inward
+      burst(W * 0.95, H * 1.0,  UP - 0.30, 0.55, Math.round(90 * scale), 27);   // bottom-right → up & inward
+      burst(W * 0.50, H * 1.02, UP,        0.80, Math.round(120 * scale), 28);  // center fountain, straight up
+    }
+    // Staggered waves so the confetti keeps coming instead of finishing in one pop.
+    let wavesPending = 4;
+    const launchWave = (scale) => { wavesPending--; fireWave(scale); };
+    launchWave(1);
+    setTimeout(() => launchWave(0.85), 320);
+    setTimeout(() => launchWave(0.7),  700);
+    setTimeout(() => launchWave(0.55), 1100);
     let frame = 0;
     (function tick(){
       frame++;
@@ -1012,7 +1021,7 @@ a{color:inherit;text-decoration:none}
         p.x += p.vx + Math.cos(p.sway) * p.swayAmp * (p.vy > 0 ? 1 : 0.25);
         p.y += p.vy;
         p.rot += p.vr;
-        const fadeStart = p.ttl * 0.78;
+        const fadeStart = p.ttl * 0.82;
         const alpha = p.life > fadeStart ? Math.max(0, 1 - (p.life - fadeStart) / (p.ttl - fadeStart)) : 1;
         ctx.save();
         ctx.globalAlpha = alpha;
@@ -1028,7 +1037,8 @@ a{color:inherit;text-decoration:none}
         }
         ctx.restore();
       }
-      if(alive && frame < 620){ requestAnimationFrame(tick); }
+      // keep running while pieces remain OR more waves are still queued
+      if((alive || wavesPending > 0) && frame < 1600){ requestAnimationFrame(tick); }
       else { canvas.remove(); }
     })();
   }
