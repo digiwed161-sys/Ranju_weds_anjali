@@ -198,6 +198,9 @@ a{color:inherit;text-decoration:none}
 .submit-btn:hover{background:var(--green2)}
 .submit-btn:disabled{opacity:.6;cursor:not-allowed}
 .submit-btn svg{width:13px;height:13px}
+.submit-btn.confirmed,.submit-btn.confirmed:disabled{background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 52%,var(--gold) 100%);color:#fff8ea;opacity:1;cursor:default;box-shadow:0 8px 24px rgba(163,129,47,.45);animation:goldPop .6s cubic-bezier(.34,1.56,.64,1)}
+.submit-btn.confirmed:hover{background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 52%,var(--gold) 100%)}
+@keyframes goldPop{0%{transform:scale(.96)}45%{transform:scale(1.05)}100%{transform:scale(1)}}
 .success{display:none;text-align:center;padding:32px 20px;background:var(--card);border-radius:10px;max-width:500px;margin:0 auto;border:1px solid var(--cardborder)}
 .success.show{display:block}
 .success .check{width:58px;height:58px;border-radius:50%;background:var(--green);color:#f7f2e7;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
@@ -972,6 +975,64 @@ a{color:inherit;text-decoration:none}
     document.getElementById('rsvpForm').style.display = 'block';
     existingRsvpKey = null;
   }
+  // ── CONFETTI POPPERS ──────────────────────────────────────────────────────
+  function fireConfetti(){
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.scale(dpr, dpr);
+    const colors = ['#a3812f','#c6a35c','#e9dcc0','#425c39','#567045','#f7f2e7'];
+    const parts = [];
+    // Two poppers firing inward from the bottom corners
+    const poppers = [
+      { x: W * 0.07, y: H * 0.96, angle: -Math.PI / 2.55 },
+      { x: W * 0.93, y: H * 0.96, angle: -Math.PI + Math.PI / 2.55 }
+    ];
+    poppers.forEach(p => {
+      for(let i = 0; i < 85; i++){
+        const a = p.angle + (Math.random() - 0.5) * 0.85;
+        const speed = 9 + Math.random() * 10;
+        parts.push({
+          x: p.x, y: p.y,
+          vx: Math.cos(a) * speed,
+          vy: Math.sin(a) * speed,
+          w: 6 + Math.random() * 6, h: 9 + Math.random() * 8,
+          color: colors[(Math.random() * colors.length) | 0],
+          rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.4,
+          life: 0, ttl: 150 + Math.random() * 60
+        });
+      }
+    });
+    let frame = 0;
+    (function tick(){
+      frame++;
+      ctx.clearRect(0, 0, W, H);
+      let alive = false;
+      for(const p of parts){
+        if(p.life > p.ttl) continue;
+        alive = true;
+        p.life++;
+        p.vy += 0.3;           // gravity
+        p.vx *= 0.99; p.vy *= 0.99;
+        p.x += p.vx; p.y += p.vy;
+        p.rot += p.vr;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, 1 - p.life / p.ttl);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+      if(alive && frame < 300){ requestAnimationFrame(tick); }
+      else { canvas.remove(); }
+    })();
+  }
+
   function submitRsvp(){
     const name = GUEST_NAME || document.getElementById('guestNameInput').value.trim();
     if(!name){showToast('Please enter your name');return;}
@@ -998,11 +1059,16 @@ a{color:inherit;text-decoration:none}
     const btn = document.getElementById('submitBtn');
     btn.disabled=true; btn.querySelector('span').textContent='SENDING…';
     const done=()=>{
-      document.getElementById('rsvpForm').style.display='none';
-      document.getElementById('success').classList.add('show');
-      document.getElementById('successMsg').textContent = attending
-        ? `Thank you, ${name}! We can't wait to celebrate with you.`
-        : `Thank you, ${name}. You'll be missed, but your blessings mean the world.`;
+      btn.classList.add('confirmed');
+      btn.querySelector('span').textContent = 'RSVP CONFIRMED ✓';
+      fireConfetti();
+      setTimeout(()=>{
+        document.getElementById('rsvpForm').style.display='none';
+        document.getElementById('success').classList.add('show');
+        document.getElementById('successMsg').textContent = attending
+          ? `Thank you, ${name}! We can't wait to celebrate with you.`
+          : `Thank you, ${name}. You'll be missed, but your blessings mean the world.`;
+      }, 1200);
     };
     if(!db){setTimeout(done,500);return;}
     const key=(name.replace(/[^a-zA-Z0-9]/g,'_').toLowerCase()||'guest')+'_'+Date.now();
