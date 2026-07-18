@@ -530,11 +530,11 @@ a{color:inherit;text-decoration:none}
           <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px;font-style:italic">Tap a function, then set how many people (including +1 guests) will be joining.</p>
           <div class="event-pick" data-ev="Wedding">
             <label class="chk"><input type="checkbox" class="ev-check" value="Wedding"><div><div class="chk-title">Nuptial Mass &amp; Wedding</div><span class="chk-sub">Sat, 7 Nov · 3:00 PM · Kozhuvanal Church</span></div></label>
-            <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining?</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
+            <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining? (max 4)</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
           </div>
           <div class="event-pick" data-ev="Reception">
             <label class="chk"><input type="checkbox" class="ev-check" value="Reception"><div><div class="chk-title">Wedding Reception</div><span class="chk-sub">Sat, 7 Nov · 6:00 PM · Orchard River Mansion</span></div></label>
-            <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining?</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
+            <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining? (max 4)</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
           </div>
         </div>
       <button class="submit-btn" id="submitBtn" onclick="submitRsvp()">
@@ -889,10 +889,12 @@ a{color:inherit;text-decoration:none}
       else{pick.classList.remove('active');cnt.style.display='none';pick.querySelector('.mini-count').textContent='1';}
     });
   });
+  const MAX_PER_EVENT = 4;
   function evCount(btn,delta){
     const s = btn.parentElement.querySelector('.mini-count');
     let n = parseInt(s.textContent,10)||1;
-    s.textContent = Math.max(1,Math.min(20,n+delta));
+    if(delta>0 && n>=MAX_PER_EVENT){ showToast('Maximum '+MAX_PER_EVENT+' guests per function'); return; }
+    s.textContent = Math.max(1,Math.min(MAX_PER_EVENT,n+delta));
   }
   let attending = true;
   function setAttending(val){
