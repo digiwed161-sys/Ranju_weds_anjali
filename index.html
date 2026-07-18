@@ -537,18 +537,6 @@ a{color:inherit;text-decoration:none}
             <div class="ev-count" style="display:none"><span class="ev-count-lbl">How many joining?</span><div class="mini-counter"><button type="button" onclick="evCount(this,-1)">−</button><span class="mini-count">1</span><button type="button" onclick="evCount(this,1)">+</button></div></div>
           </div>
         </div>
-        <div class="field" id="accommodationField">
-          <label class="field-label"><span class="num">4</span>ACCOMMODATION FOR 7TH NOV NIGHT?</label>
-          <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px;font-style:italic">Do you require a place to stay for the night of 7th November?</p>
-          <div class="rsvp-attend-toggle">
-            <button type="button" class="toggle-btn" id="accYes" onclick="setAccommodation(true)">YES, PLEASE</button>
-            <button type="button" class="toggle-btn active" id="accNo" onclick="setAccommodation(false)">NOT NEEDED</button>
-          </div>
-        </div>
-        <div class="field">
-          <label class="field-label"><span class="num">5</span>A NOTE FOR THE COUPLE <span style="opacity:.6;font-weight:400">(optional)</span></label>
-          <textarea class="textarea" id="rsvpMessage" placeholder="Share a blessing or a message…" style="min-height:70px;resize:none"></textarea>
-        </div>
       <button class="submit-btn" id="submitBtn" onclick="submitRsvp()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
         <span>CONFIRM RSVP</span>
@@ -913,13 +901,6 @@ a{color:inherit;text-decoration:none}
     document.getElementById('attendNo').classList.toggle('active',!val);
     document.getElementById('fullForm').style.display = val ? 'block' : 'none';
   }
-  let accommodation = false;
-  function setAccommodation(val){
-    accommodation = val;
-    document.getElementById('accYes').classList.toggle('active', val);
-    document.getElementById('accNo').classList.toggle('active',!val);
-  }
-
   function addToCal(title,start,end,loc){
     const fmt = s=>s.replace(/[-:]/g,'');
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${fmt(start+'00')}/${fmt(end+'00')}&location=${encodeURIComponent(loc)}`;
@@ -957,9 +938,9 @@ a{color:inherit;text-decoration:none}
     } else {
       document.getElementById('exEventsRow').style.display = 'none';
     }
-    if(r.attending){
+    if(r.attending && r.accommodation){
       document.getElementById('exAccRow').style.display = 'block';
-      document.getElementById('exAcc').textContent = r.accommodation ? 'Yes — needed for 7 Nov night' : 'Not required';
+      document.getElementById('exAcc').textContent = 'Yes — needed for 7 Nov night';
     } else {
       document.getElementById('exAccRow').style.display = 'none';
     }
@@ -1046,13 +1027,12 @@ a{color:inherit;text-decoration:none}
       });
       if(eventsList.length===0){showToast('Please select at least one function');return;}
     }
-    const msg = document.getElementById('rsvpMessage').value.trim();
     const entry = {
       name, attending,
       events:eventsList, eventsDetail,
       members:maxMembers, totalMembers,
-      accommodation: attending ? accommodation : false,
-      message:msg,
+      accommodation: false,
+      message:'',
       time:new Date().toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),
       ts:Date.now()
     };
