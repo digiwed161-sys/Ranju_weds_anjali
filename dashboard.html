@@ -355,7 +355,22 @@ function exportCSV(){
     '"'+(r.message||'').replace(/"/g,'""')+'"',
     '"'+(r.time||'')+'"'
   ].join(','));
-  const csv = [headers.join(','), ...rows].join('\n');
+  const attending = allRsvps.filter(r=>r.attending);
+  const guestsForEvent = ev => attending.reduce((s,r)=>{
+    if(r.events && r.events.includes(ev)){
+      return s + ((r.eventsDetail && r.eventsDetail[ev]) || r.totalMembers || r.members || 1);
+    }
+    return s;
+  },0);
+  const totalGuests = attending.reduce((s,r)=>s+(r.totalMembers||r.members||1),0);
+  const summary = [
+    '',
+    'SUMMARY,,,,,,',
+    'Wedding Guests,'+guestsForEvent('Wedding')+',,,,,',
+    'Reception Guests,'+guestsForEvent('Reception')+',,,,,',
+    'Total Guests (all),'+totalGuests+',,,,,'
+  ];
+  const csv = [headers.join(','), ...rows, ...summary].join('\n');
   const blob = new Blob([csv], {type:'text/csv'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
