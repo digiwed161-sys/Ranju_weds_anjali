@@ -123,6 +123,14 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--text);fon
       <div class="stat-label">TOTAL GUESTS</div>
     </div>
     <div class="stat-card">
+      <div class="stat-num" id="statWeddingGuests">—</div>
+      <div class="stat-label">WEDDING GUESTS</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statReceptionGuests">—</div>
+      <div class="stat-label">RECEPTION GUESTS</div>
+    </div>
+    <div class="stat-card">
       <div class="stat-num" id="statDeclined">—</div>
       <div class="stat-label">NOT ATTENDING</div>
     </div>
@@ -245,9 +253,17 @@ function updateStats(){
   const attending = allRsvps.filter(r=>r.attending);
   const declined  = allRsvps.filter(r=>!r.attending);
   const totalGuests = attending.reduce((s,r)=>s+(r.totalMembers||r.members||1),0);
+  const guestsForEvent = ev => attending.reduce((s,r)=>{
+    if(r.events && r.events.includes(ev)){
+      return s + ((r.eventsDetail && r.eventsDetail[ev]) || r.totalMembers || r.members || 1);
+    }
+    return s;
+  },0);
   document.getElementById('statTotal').textContent    = allRsvps.length;
   document.getElementById('statAttending').textContent = attending.length;
   document.getElementById('statGuests').textContent   = totalGuests;
+  document.getElementById('statWeddingGuests').textContent   = guestsForEvent('Wedding');
+  document.getElementById('statReceptionGuests').textContent = guestsForEvent('Reception');
   document.getElementById('statDeclined').textContent  = declined.length;
 }
 
