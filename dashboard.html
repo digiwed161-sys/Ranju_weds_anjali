@@ -345,30 +345,30 @@ function whatsappLink(){
 // ── EXPORT CSV ───────────────────────────────────────────────────────────
 function exportCSV(){
   if(!allRsvps.length){ showToast('NO DATA YET'); return; }
-  const headers = ['Name','Attending','Functions','Total Guests','Accommodation','Message','Time'];
+  const eventCount = (r,ev) => {
+    if(!r.attending || !r.events || !r.events.includes(ev)) return 0;
+    return (r.eventsDetail && r.eventsDetail[ev]) || r.totalMembers || r.members || 1;
+  };
+  const headers = ['Name','Attending','Wedding','Reception','Total Guests','Accommodation','Message','Time'];
   const rows = allRsvps.map(r => [
     '"'+(r.name||'').replace(/"/g,'""')+'"',
     r.attending ? 'Yes' : 'No',
-    '"'+((r.events||[]).map(e=>e+(r.eventsDetail&&r.eventsDetail[e]?' ('+r.eventsDetail[e]+')':'')).join(', '))+'"',
+    eventCount(r,'Wedding'),
+    eventCount(r,'Reception'),
     r.attending ? (r.totalMembers||r.members||1) : 0,
     r.attending && r.accommodation ? 'Yes' : 'No',
     '"'+(r.message||'').replace(/"/g,'""')+'"',
     '"'+(r.time||'')+'"'
   ].join(','));
   const attending = allRsvps.filter(r=>r.attending);
-  const guestsForEvent = ev => attending.reduce((s,r)=>{
-    if(r.events && r.events.includes(ev)){
-      return s + ((r.eventsDetail && r.eventsDetail[ev]) || r.totalMembers || r.members || 1);
-    }
-    return s;
-  },0);
+  const guestsForEvent = ev => attending.reduce((s,r)=>s+eventCount(r,ev),0);
   const totalGuests = attending.reduce((s,r)=>s+(r.totalMembers||r.members||1),0);
   const summary = [
     '',
-    'SUMMARY,,,,,,',
-    'Wedding Guests,'+guestsForEvent('Wedding')+',,,,,',
-    'Reception Guests,'+guestsForEvent('Reception')+',,,,,',
-    'Total Guests (all),'+totalGuests+',,,,,'
+    'SUMMARY,,,,,,,',
+    'Wedding Guests,,'+guestsForEvent('Wedding')+',,,,,',
+    'Reception Guests,,,'+guestsForEvent('Reception')+',,,,',
+    'Total Guests (all),,,,'+totalGuests+',,,'
   ];
   const csv = [headers.join(','), ...rows, ...summary].join('\n');
   const blob = new Blob([csv], {type:'text/csv'});
